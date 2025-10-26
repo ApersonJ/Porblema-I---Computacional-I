@@ -2,16 +2,17 @@
 #include <string>
 using namespace std;
 
-void solicitarDatos(double &L0, double &x0, double &v0,
-                    double &u, double &t0, double &tf, double &dt);
+void solicitarDatos(double &x0, double &y0, double &z0, double &vx0,
+                    double &vy0, double &vz0, double &R, double &xc, 
+					double &yc, double &zc, double &dt);
 
-void validarDatos(double &L0, double &x0, double &v0,
-                  double &u, double &t0, double &tf, double &dt);
+void validarDatos(double &x0, double &y0, double &z0, double &R, double &xc, 
+					double &yc, double &zc, double &dt);
 
-void simularMovimiento(double L0, double x0, double v0, double u,
-                       double t0, double tf, double dt,
-                       const string &nombreArchivo);
+void simularMovimiento(double &x0, double &y0, double &z0, double &vx0, 
+					double &vy0, double &vz0, double &R, double &xc, 
+					double &yc, double &zc, double &dt, const string nombreArchivo);
 
-void graficarDatos(const string &nombreArchivo, const string &nombreImagen);
+void graficarDatos(const string& nombreArchivo, const string& nombreImagen3D);
 
-void generarAnimacion(const string &nombreArchivo, const string &gifSalida);
+void generarAnimacion(const string &nombreArchivo, const string &gifSalida3D);

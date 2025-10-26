@@ -1,23 +1,27 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
+#include <string>
 #include "../include/funciones.h"
 using namespace std;
 
-void graficarDatos(const string &nombreArchivo, const string &nombreImagen) {
-    ofstream gp("scripts/plot_box1D.gp");
+void graficarDatos(const string &nombreArchivo, const string &nombreImagen3D) {
+    ofstream gp("../scripts/splot_sphere.gp");
     gp << "set terminal pngcairo size 800,600\n";
-    gp << "set output '" << nombreImagen << "'\n";
-    gp << "set title 'Movimiento en caja 1D con pared móvil'\n";
-    gp << "set xlabel 'Tiempo (s)'\n";
-    gp << "set ylabel 'Posición (m)'\n";
+    gp << "set output '" << nombreImagen3D << "'\n";
+    gp << "set title 'Movimiento Parabolico Tridimensional Sobre una Semiesfera'\n";
+    gp << "set xlabel '(m)'\n";
+    gp << "set ylabel '(m)'\n";
+    gp << "set zlabel '(m)'\n";
     gp << "set grid\n";
-    gp << "plot '" << nombreArchivo
-       << "' every ::1 using 1:2 with lines lw 2 lc rgb 'blue' title 'Partícula',\\\n";
+    gp << "set ticslevel 0\n";  // coloca el plano z=0 en la base
+    gp << "set view 60, 45\n";  // ángulo de visión: elevación, rotación
+    gp << "splot '" << nombreArchivo
+       << "' every ::1 using 2:3:4 with lines lw 2 lc rgb 'blue' title 'Partícula',\\\n";
     gp << "     '" << nombreArchivo
-       << "' every ::1 using 1:4 with lines lw 1 lc rgb 'gray' title 'Pared móvil'\n";
+       << "' index 1 with lines lc rgb 'gray' title 'Semiesfera'\n";
     gp << "unset output\n";
     gp.close();
-    system("gnuplot scripts/plot_box1D.gp");
-    cout << " Gráfico generado: " << nombreImagen << endl;
+    system("gnuplot ../scripts/splot_sphere.gp");
+    cout << " Gráfico generado: " << nombreImagen3D << endl;
 }
