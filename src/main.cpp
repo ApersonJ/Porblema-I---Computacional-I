@@ -17,5 +17,7 @@ int main() {
     // Generar PNG, GIF y abrir ventana interactiva con Gnuplot
     graficarDatos("datosParcial1.1.dat", "Parcial1.1_grafico.png");
 
+    generarAnimacion("datosParcial1.1.dat", "Parcial1.1Animacion.gif");
+
     return 0; // solo mensajes informativos de graficarDatos
 }

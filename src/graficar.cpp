@@ -16,6 +16,7 @@ void graficarDatos(const string &nombreArchivo, const string &nombreImagen3D) {
     gp << "set grid\n";
     gp << "set ticslevel 0\n";  // coloca el plano z=0 en la base
     gp << "set view 60, 45\n";  // ángulo de visión: elevación, rotación
+    gp << "set view equal xyz\n";
     gp << "splot '" << nombreArchivo
        << "' every ::1 using 2:3:4 with lines lw 2 lc rgb 'blue' title 'Partícula',\\\n";
     gp << "     '" << nombreArchivo

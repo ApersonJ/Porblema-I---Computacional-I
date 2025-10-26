@@ -160,7 +160,7 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
         {
             xs = xc + R * sin(theta) * cos(phi);
             ys = yc + R * sin(theta) * sin(phi);
-            zs = R * cos(theta);
+            zs = zc + R * cos(theta);
 
             myfile << setw(12) << xs
                << setw(15) << ys
