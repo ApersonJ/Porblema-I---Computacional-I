@@ -1,4 +1,4 @@
-//main.cpp
+//main.cpp //hptica
 
 #include <iostream>
 #include "../include/funciones.h"
