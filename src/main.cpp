@@ -12,12 +12,12 @@ int main() {
 
     solicitarDatos(x0, y0, z0, vx0, vy0, vz0, R, xc, yc, zc, dt);
     validarDatos(x0, y0, z0, R, xc, yc, zc, dt);
-    simularMovimiento(x0, y0, z0, vx0, vy0, vz0, R, xc, yc, zc, dt, "datosParcial1.1.dat" );
+    simularMovimiento(x0, y0, z0, vx0, vy0, vz0, R, xc, yc, zc, dt, "../results/datosParcial1.1.dat" );
 
     // Generar PNG, GIF y abrir ventana interactiva con Gnuplot
-    graficarDatos("datosParcial1.1.dat", "Parcial1.1_grafico.png");
+    graficarDatos("../results/datosParcial1.1.dat", "../results/Parcial1.1_grafico.png");
 
-    generarAnimacion("datosParcial1.1.dat", "Parcial1.1Animacion.gif");
+    generarAnimacion("../results/datosParcial1.1.dat", "../results/Parcial1.1Animacion.gif");
 
     return 0; // solo mensajes informativos de graficarDatos
 }

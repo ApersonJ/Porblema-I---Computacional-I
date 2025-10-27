@@ -1,6 +1,6 @@
 # ===== Animación 3D =====
-datafile='datosParcial1.1.dat'
-giffile='Parcial1.1Animacion.gif'
+datafile='../results/datosParcial1.1.dat'
+giffile='../results/Parcial1.1Animacion.gif'
 
 set terminal gif animate delay 6 size 900,600
 set output giffile
