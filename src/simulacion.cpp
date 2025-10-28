@@ -145,7 +145,7 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
     }
 
     //Generar semiesfera
-    const double dtheta = 0.1;                   //Para la presición de los puntos de la esfera
+    const double dtheta = 0.1;                   //Para la presicion de los puntos de la esfera
     const double dphi = 0.1;
     double xs = 0, ys = 0, zs = 0;
 
