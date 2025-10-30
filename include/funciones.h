@@ -13,6 +13,7 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
 					double &vy0, double &vz0, double &R, double &xc, 
 					double &yc, double &zc, double &dt, const string nombreArchivo);
 
-void graficarDatos(const string& nombreArchivo, const string& nombreImagen3D);
+void graficarDatos(const string &nombreArchivo, const string &nombreImagen3D, 
+					const string &nombre_xt, const string &nombre_yt, const string &nombre_zt);
 
 void generarAnimacion(const string &nombreArchivo, const string &gifSalida3D);

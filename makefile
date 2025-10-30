@@ -8,7 +8,7 @@ build:
 	g++ src/main.cpp src/simulacion.cpp src/graficar.cpp src/animar.cpp -Iinclude -o bin/parabolic3D
 
 run: build
-	./bin/parabolic3D
+	cd bin && ./parabolic3D
 
 doc:
 	
