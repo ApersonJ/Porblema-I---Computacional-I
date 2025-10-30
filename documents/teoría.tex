@@ -1,0 +1,58 @@
+\documentclass[a4paper,10pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage{xcolor}
+\usepackage{geometry}
+\geometry{margin=2cm}
+
+\title{Simulación 3D de Tiro Parabólico y Colisión Entre Partícula y Semiesfera Inamovible}
+\author{López P. Nicolas - Vitola G. Jesús D. - Mariana I. Velandia R. - Laura Riaño}
+\date{Octubre 2025}
+
+\begin{document}
+	\maketitle
+	
+	\section{Planteamiento del problema}
+	Una partícula de posición inicial \(\overrightarrow{r_0}=(x_0, y_0, z_0)\) es lanzada con una velocidad \(\overrightarrow{v}=(v_{x0}, v_{y0}, v_{z0})\), la partícula colisiona elásticamente con una semiesfera inamovible (\(m_p<<m_c\)) con centro en \(\overrightarrow{r_c}=(x_c, y_c, z_c)\) y radio \(R\).
+	
+	\section{Solución numérica}
+	Se integra paso a paso la posición en cada coordenada:
+	\[
+	\begin{cases}
+		x_{n+1} &= x_n + v_{x0} \Delta t\\
+		y_{n+1} &= y_n + v_{y0} \Delta t\\
+		z_{n+1} &= z_n + v_{z0}\Delta t - \frac{1}{2} g \Delta t^2\\
+	\end{cases}
+	\]
+	y se registran \(t, x, y, z, v_z\) hasta que \(z\le0\)
+	
+	\subsection{Colisión}
+	Hay colisión cuando \(\left\| \overrightarrow{r}-\overrightarrow{r_c} \right\| \le R\), al darse el vector velocidad cambia de dirección según la ecuación:
+	\[
+	\overrightarrow{v}=\overrightarrow{v_i}-2(\overrightarrow{v_i} \cdot \hat{n} )\hat{n}
+	\]
+	
+	Dónde \(\overrightarrow{v_i}\) corresponde a la velocidad al momento de la colisión y \(\hat{n}\) al vector normal a la superficie de la esfera en el punto de impacto que se calcula mediante:
+	\[
+	\hat{n}=\frac{\overrightarrow{r_i}-\overrightarrow{r_c}}{\left\| \overrightarrow{r_i}-\overrightarrow{r_c} \right\|} = \frac{\overrightarrow{r_i}-\overrightarrow{r_c}}{R}
+	\]
+	
+	Con \(\overrightarrow{r_i}\) como la posición de la partícula al momento del impacto.
+	
+	Bajo ese sentido las componentes de velocidad al instante posterior del impacto son:
+	
+	\[
+	\begin{cases}
+		v_x &= v_{xi} - 2\left( \overrightarrow{v_p} \cdot \hat{n} \right) \hat{n}_x\\
+		v_y &= v_{yi} - 2\left( \overrightarrow{v_p} \cdot \hat{n} \right) \hat{n}_y\\
+		v_z &= v_{zi} - 2\left( \overrightarrow{v_p} \cdot \hat{n} \right) \hat{n}_z\\
+	\end{cases}
+	\]
+		
+	\section{Resultados}
+	Se muestran 3 gráficos correspondientes a la evolución de cada coordenada de la partícula a lo largo del trayecto \(x(t), y(t),z(t)\), también se muestra en 3D la trayectoria total de la partícula.
+	
+	\section{Conclusión}
+	El objeto disminuye su velocidad al instante posterior de la colisión, rebotando en la dirección normal a la superficie de la esfera en punto de impacto, describiendo otro movimiento parabólico.
+	
+\end{document}
