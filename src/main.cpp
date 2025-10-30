@@ -15,7 +15,8 @@ int main() {
     simularMovimiento(x0, y0, z0, vx0, vy0, vz0, R, xc, yc, zc, dt, "../results/datosParcial1.1.dat" );
 
     // Generar PNG, GIF y abrir ventana interactiva con Gnuplot
-    graficarDatos("../results/datosParcial1.1.dat", "../results/Parcial1.1_grafico.png");
+    graficarDatos("../results/datosParcial1.1.dat", "../results/Parcial1.1_grafico.png", 
+				  "../results/Parcial1.1_grafico_x(t).png", "../results/Parcial1.1_grafico_y(t).png", "../results/Parcial1.1_grafico_z(t).png");
 
     generarAnimacion("../results/datosParcial1.1.dat", "../results/Parcial1.1Animacion.gif");
 
