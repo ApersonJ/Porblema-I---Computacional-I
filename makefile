@@ -12,7 +12,7 @@ run: build
 
 doc:
 	
-	pdflatex -interaction=nonstopmode -output-directory=documents documents/teoria_parabolic3D.tex
+	pdflatex -interaction=nonstopmode -output-directory=documents ../documents/teoria.tex
 
 clean:
 	rm -f bin/box1D results/* scripts/*.gp documents/*.aux documents/*.log documents/*.pdf

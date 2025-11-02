@@ -1,18 +1,18 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.10.30)  30 OCT 2025 14:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2025/dev/Debian) (preloaded format=pdflatex 2025.10.30)  2 NOV 2025 18:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
-**documents/teoria_parabolic3D.tex
+**../documents/teoria.tex
 
 ! Emergency stop.
-<*> documents/teoria_parabolic3D.tex
-                                    
+<*> ../documents/teoria.tex
+                           
 *** (job aborted, file error in nonstop mode)
 
  
 Here is how much of TeX's memory you used:
- 4 strings out of 475178
- 149 string characters out of 5766538
+ 5 strings out of 475178
+ 150 string characters out of 5766538
  386848 words of memory out of 5000000
  23100 multiletter control sequences out of 15000+600000
  558837 words of font info for 36 fonts, out of 8000000 for 9000
