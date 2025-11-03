@@ -21,7 +21,7 @@ make
 El programa solicitará los datos iniciales (posición, velocidad, radio de la esfera, paso de tiempo, etc.), luego generará los siguientes archivos:
 - `Parcial1.1_grafico.png`: gráfica estática 3D.
 - `Parcial1.1Animacion.gif`: animación del movimiento.
-- Graficas de x(t), y(t) y z(y).
+- Graficas de x(t), y(t) y z(t).
 
 ## Requisitos
 - **Compilador:** G++  
