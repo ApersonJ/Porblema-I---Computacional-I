@@ -6,11 +6,34 @@
 #include "../include/funciones.h"
 using namespace std;
 
-const double EPSILON = 1.0e-6; // radio de colisiï¿½n
-const double g = 9.8;
-const double PI = 3.14159265;
+/**
+ * @file funciones.cpp
+ * @brief Implementación de las funciones principales para simular el movimiento de un proyectil
+ * y su interacción con una esfera mediante colisiones elásticas.
+ */
 
+const double EPSILON = 1.0e-6; ///< Umbral de proximidad usado para detectar colisiones.
+const double g = 9.8;          ///< Aceleración de la gravedad (m/s²).
+const double PI = 3.14159265;  ///< Constante pi.
 
+/**
+ * @brief Solicita al usuario los datos iniciales del sistema.
+ *
+ * Esta función pide por consola la posición y velocidad inicial del proyectil,
+ * la posición del centro y el radio de la esfera, así como el paso temporal de integración.
+ *
+ * @param x0 Posición inicial en el eje X (m).
+ * @param y0 Posición inicial en el eje Y (m).
+ * @param z0 Posición inicial en el eje Z (m).
+ * @param vx0 Velocidad inicial en el eje X (m/s).
+ * @param vy0 Velocidad inicial en el eje Y (m/s).
+ * @param vz0 Velocidad inicial en el eje Z (m/s).
+ * @param R Radio de la esfera (m).
+ * @param xc Coordenada X del centro de la esfera (m).
+ * @param yc Coordenada Y del centro de la esfera (m).
+ * @param zc Coordenada Z del centro de la esfera (m).
+ * @param dt Paso de tiempo (s).
+ */
 void solicitarDatos(double &x0, double &y0, double &z0, double &vx0,
                     double &vy0, double &vz0, double &R, double &xc, 
 					double &yc, double &zc, double &dt) {
@@ -36,7 +59,13 @@ void solicitarDatos(double &x0, double &y0, double &z0, double &vx0,
     cin  >> dt;
 }
 
-// Verifica que los datos cumplan restricciones mï¿½nimas.
+/**
+ * @brief Valida que los datos ingresados por el usuario sean físicamente consistentes.
+ *
+ * Comprueba que el radio de la esfera y el paso de tiempo sean positivos, que la posición inicial
+ * del proyectil esté por encima del suelo, y que el proyectil no empiece dentro o demasiado cerca de la esfera.
+ *
+ */
 void validarDatos(double &x0, double &y0, double &z0, double &R, double &xc, 
 					double &yc, double &zc, double &dt) {
 	
@@ -61,7 +90,7 @@ void validarDatos(double &x0, double &y0, double &z0, double &R, double &xc,
     // Proyectil dentro o muy cerca de la esfera 
     do {
         if (D0 <= R+0.1) {
-            cout << "El proyectil estï¿½ dentro o demasiado cerca de la esfera, aleje la posicion inicial del proyectil (x0, y0, z0)"<<endl;
+            cout << "El proyectil está dentro o demasiado cerca de la esfera, aleje la posicion inicial del proyectil (x0, y0, z0)"<<endl;
             cin >> x0;
     		cin	>> y0;
     		cin >> z0;
@@ -77,8 +106,15 @@ void validarDatos(double &x0, double &y0, double &z0, double &R, double &xc,
     } while (dt <= 0.0);
 }
 
-
-// Simula y guarda en archivo: t, x, v (sin imprimir por pantalla).
+/**
+ * @brief Simula el movimiento del proyectil y registra los resultados en un archivo.
+ *
+ * Integra la ecuación de movimiento del proyectil bajo la acción de la gravedad y
+ * calcula las colisiones elásticas con una esfera fija. Los datos se guardan en un
+ * archivo de texto para su posterior análisis o graficación.
+ *
+ * @param nombreArchivo Nombre del archivo donde se guardarán los resultados.
+ */
 void simularMovimiento(double &x0, double &y0, double &z0, double &vx0, 
 					double &vy0, double &vz0, double &R, double &xc, 
 					double &yc, double &zc, double &dt, const string nombreArchivo) {
@@ -100,8 +136,7 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
     double t=0.0, x=x0, y=y0, z=z0, vx=vx0, vy=vy0, vz=vz0;
     int i=0;
            
-    // 5) Parï¿½metro de distancia entre el punto y las paredes
-
+    // 5) Parámetro de distancia entre el punto y las paredes
     double D = sqrt((x-xc)*(x-xc)+(y-yc)*(y-yc)+(z-zc)*(z-zc));
     
     while (z >= -EPSILON) {
@@ -117,39 +152,37 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
         
 		vz -= g*dt;
 
-        // Actualizaciï¿½n de la posiciï¿½n del proyectil
+        // Actualización de la posición del proyectil
         x += vx*dt;
         y += vy*dt;
         z += vz*dt;
         
-        // Actualizaciï¿½n del parï¿½metro de distancia
+        // Actualización del parámetro de distancia
         D = sqrt((x-xc)*(x-xc)+(y-yc)*(y-yc)+(z-zc)*(z-zc));
 
-        // Verificaciï¿½n de rebotes
+        // Verificación de rebotes (colisión elástica)
         if (D <= R+EPSILON) {
-        	// Calculo de vector normal n al momento del impacto
+        	// Cálculo del vector normal al punto de impacto
         	double nx = (x-xc)/D,
 				   ny = (y-yc)/D, 
 				   nz = (z-zc)/D;
 				   
-    		// Calculo de la velocidad despues del choque
-    		//producto escalar de la velocidad (vx0, vy0, vz) y vector normal
+    		// Producto escalar entre velocidad y vector normal
     		double v_n = (vx*nx)+(vy*ny)+(vz*nz);
     		
-    		// se reescriben las velocidades
+    		// Actualización de componentes de velocidad tras el impacto
     		vx = vx-2*v_n*nx;
     		vy = vy-2*v_n*ny;
     		vz = vz-2*v_n*nz;
 		}
-		
     }
 
-    //Generar semiesfera
-    const double dtheta = 0.1;                   //Para la presicion de los puntos de la esfera
-    const double dphi = 0.1;
+    // Generar semiesfera (para referencia visual en gráficos)
+    const double dtheta = 0.1; ///< Incremento angular polar para la precisión de la esfera.
+    const double dphi = 0.1;   ///< Incremento angular azimutal para la precisión de la esfera.
     double xs = 0, ys = 0, zs = 0;
 
-    myfile     << "\n\n";                       //Linea en blanco para separar los datos  
+    myfile     << "\n\n";                       
     myfile     << setw(12) << "#xs"
                << setw(15) << "ys"
                << setw(15) << "zs" << '\n';
@@ -168,10 +201,9 @@ void simularMovimiento(double &x0, double &y0, double &z0, double &vx0,
          }
         
         myfile << '\n';
-         
-
     }
     
-    // 6) Cerrar
+    // 6) Cerrar archivo
     myfile.close();
 }
+

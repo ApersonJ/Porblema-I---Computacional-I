@@ -1,9 +1,31 @@
+/**
+ * @file animacion.cpp
+ * @brief Genera una animación en 3D del movimiento parabólico de una partícula sobre una semiesfera.
+ * 
+ * Este archivo crea un script de Gnuplot que produce un GIF animado de la trayectoria
+ * de una partícula en movimiento parabólico tridimensional. La animación muestra tanto la
+ * trayectoria acumulada como la posición actual del objeto en cada instante.
+ */
+
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
 #include "../include/funciones.h"
 using namespace std;
 
+/**
+ * @brief Genera un archivo de animación GIF mostrando el movimiento parabólico en 3D.
+ * 
+ * La función crea un script de Gnuplot que dibuja cuadro por cuadro la trayectoria
+ * acumulada de una partícula hasta un punto determinado, junto con la representación
+ * de una semiesfera de referencia. Cada fotograma se agrega a un GIF animado.
+ * 
+ * @param nombreArchivo Ruta al archivo de datos que contiene la información de la trayectoria y la semiesfera.
+ * @param gifSalida Nombre del archivo GIF de salida donde se guardará la animación generada.
+ * 
+ * @note El script de Gnuplot se guarda en la carpeta "../scripts/" con el nombre "animate_Parabolic3D.gp".
+ * @warning Es necesario tener instalado Gnuplot en el sistema para ejecutar correctamente la animación.
+ */
 void generarAnimacion(const string &nombreArchivo, const string &gifSalida) {
     ofstream gp("../scripts/animate_Parabolic3D.gp");
 
@@ -80,3 +102,4 @@ void generarAnimacion(const string &nombreArchivo, const string &gifSalida) {
     system("gnuplot ../scripts/animate_Parabolic3D.gp");
     cout << "AnimaciÃ³n guardada en: " << gifSalida << endl;
 }
+
