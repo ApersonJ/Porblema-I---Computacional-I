@@ -1,4 +1,4 @@
-# Simulación: Partícula que Choca con una Esfera 3D
+# Simulación de Partícula en Caja 1D con Colisiones Inelásticas
 
 ## Descripción
 Modificar el programa $Particle1Dbox.cpp$ para estudiar colisiones no inelásticas con las paredes, donde la velocidad despues del choque sigue la relación $v´=-ev$ con "$0<e\leq 1$ (coeficiente de restitución). 
