@@ -8,5 +8,5 @@ set grid
 set ticslevel 0
 set view 60, 45
 set view equal xyz
-splot '../results/datosParcial1.1.dat' every ::1 using 2:3:4 with lines lw 2 lc rgb 'blue' title 'Partï¿½cula',\
+splot '../results/datosParcial1.1.dat' every ::1 using 2:3:4 with lines lw 2 lc rgb 'blue' title 'Partícula',\
      '../results/datosParcial1.1.dat' index 1 with lines lc rgb 'gray' title 'Semiesfera'
