@@ -75,20 +75,13 @@ Durante la ejecución:
 
 ---
 
-## 💡 Descripción del modelo
+##  Descripción del modelo
 
 El **triángulo de Reuleaux** es una figura de anchura constante construida a partir de tres arcos de radio igual al lado \(L\) de un triángulo equilátero.  
 Cada arco está centrado en un vértice del triángulo.
 
 Una partícula libre se mueve en línea recta hasta chocar con uno de los tres arcos.  
-Cuando ocurre la colisión, su velocidad se refleja elásticamente conservando la energía cinética:
-
-\[
-
-ec{v}' = ec{v} - 2(ec{v} \cdot \hat{n}) \hat{n}
-\]
-
-donde \(\hat{n}\) es la normal al arco en el punto de contacto.
+Cuando ocurre la colisión, su velocidad se refleja elásticamente conservando la energía cinética.
 
 ---
 
